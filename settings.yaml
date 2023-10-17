@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-yolo-setting
+  name: theme-yoyo-setting
 spec:
   forms:
     - group: cdns
