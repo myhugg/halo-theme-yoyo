@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--<html lang="en" th:fragment="html (content,title)" data-user-color-scheme="light">-->
+<html lang="en" th:fragment="html (content,title)" >
+  <th:block th:replace="~{modules/header}" th:with="title=${title}" />
+    <body>
+      <div id="app">
+        <th:block th:replace="~{modules/navigation}" />
+          <div class="flex-container">
+            <th:block th:if="${content != null}">
+              <th:block th:replace="${content}" />
+            </th:block>
+            <th:block th:replace="~{modules/fotter}" />
+          </div>
+            <div class="tools-bar">
+            <th:block th:replace="~{modules/backtotop}" />
+            <!-- search -->
+            <th:block th:replace="~{modules/search}" />
+          </div>
+      </div>
+    </body>
+  </html>

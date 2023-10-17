@@ -1,0 +1,20 @@
+<div class="footer flex">
+  <section class="container">
+    <nav class="footer-links">
+      <p><center>
+        Theme is<a href="https://github.com/myhugg/halo-theme-yolo" target="_blank">Yoyo</a> 
+        Powered by<a href="https://halo.run" target="_blank">Halo</a>
+        <a
+        href="https://beian.miit.gov.cn/"
+        target="_blank"
+        th:href="${theme.config.beian.icp_link}"
+        th:text="${theme.config.beian.icp_text}"
+      ></a>
+      </center></p>
+    </nav>
+  </section>
+  <!--全局代码注入-->
+  <div class="footer-more">
+    <halo:footer />
+  </div>
+</div>

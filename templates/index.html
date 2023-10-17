@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content}, title=${site.title})">
+  <th:block th:fragment="content">
+    <main>
+    <div class="container">
+        <section class="my">
+            <div class="content">
+              <p th:text="${theme.config.general.sidebar_subtitle ?: site.subtitle}"></p>
+            </div>
+            <div class="social">
+              <ul>
+                <li th:each="item : ${theme.config.fotter.social_media}">
+                  <a th:title="${item.name}" th:href="${item.url}">
+                    <i th:class="|${item.icon}|"></i>
+                  </a>
+                </li>
+              </ul>
+            </div> 
+        </section>
+    </div>
+      <div class="container">
+       <section>
+        <h2>Latest Articles <a class=section-button href="/archives">View all</a></h2>
+          <div class="post">
+           <div class="post"> 
+           <!-- 遍历渲染文章 -->
+           <div class="post-row" th:each="post : ${posts.items}" th:title="${post.spec.title}">
+           <h3>
+            <a th:href="${post.status.permalink}">
+                <time th:text="${#dates.format(post.spec.publishTime, 'MM-dd')}"></time>
+                <span>
+                <span th:if="${post.spec.pinned}" th:title="${post.spec.title}" ></span>
+                <span th:text="${post.spec.title}"></span>
+              </span>
+            </a>
+          </h3>
+        </div>
+       </div>
+       </div>
+      </section>
+      <section>
+        <h2>Projects</h2>
+        <div class="projects">
+          <div class="project">
+            <div>
+              <a th:href="${theme.config.Projects.Projects_links}" target="_blank" rel="noreferrer">
+              <div class="icon"><img th:src="${theme.config.Projects.Projects_icon}" height="30px" width="30px"></div>
+              <h3 th:text="${theme.config.Projects.Projects_name}"></h3>
+              </a>
+              <div class="description"><a th:text="${theme.config.Projects.Projects_ms}"></div>
+            </div>
+              <div class="flex">
+                <a th:href="${theme.config.Projects.Projects_links}" class="button" target="_blank" rel="noreferrer">Source</a>
+              </div>
+          </div>
+        </div>
+      </section>
+      <!--翻页按钮 
+      <nav class="post-navigation">
+        <a th:if="${posts.hasPrevious()}" th:href="@{${posts.prevUrl}}"><i class="iconfont icon-angleleft"></i></a>
+        <span class="page-num" th:text="|${posts.page} / ${posts.totalPages}|"></span>
+        <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}"><i class="iconfont icon-angleright"></i></a>
+      </nav>
+      -->
+    </div>
+    </main>
+  </th:block>
+</html>

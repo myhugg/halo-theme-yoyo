@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content}, title=${singlePage.spec.title} + ' - ' + ${site.title})">
+  <th:block th:fragment="content">
+    <main>
+      <header>
+          <div class="container">
+              <h1>About</h1>
+              <p class="subtitle">You can understand <span class="count">me.</span></p>
+          </div>
+        </header>
+      <div class="container">
+        <div class="markdown-body" th:utext="${singlePage.content.content}"></div>
+          <!-- 评论 -->
+          <div class="comment-container">
+            <halo:comment
+              group="content.halo.run"
+              kind="SinglePage"
+              th:attr="name=${singlePage.metadata.name}"
+              colorScheme="colorMode"
+            />
+          </div>
+      </div>
+    </main>
+  </th:block>
+</html>

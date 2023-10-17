@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="modules/layout :: html(content = ~{::content}, title='链接：' + ${site.title})">
+  <th:block th:fragment="content">
+    <main>
+      <header>
+        <div class="container">
+            <h1>Links</h1>
+            <p class="subtitle">My good <span class="count">friend</span> is here.</p>
+        </div>
+      </header>
+      <div class="container">
+        <div class="article-post">
+          <h3>我的信息</h3>
+          <ul><li>站点名称：丹作百年</li><li>站点地址：https://playet.cn</li><li>站点Logo：https://cdn.playet.cn/upload/default/timg-2.jpg</li><li>站点描述：汝果欲学诗，工夫在诗外。</li></ul>
+        </div>
+          <div class="linkpage">
+            <th:block th:each="group : ${groups}" th:if="${not #lists.isEmpty(group.links)}">
+              <h3 th:if="${#lists.size(groups) > 1}" th:text="${group.spec.displayName}"></h3>
+              <ul id="friendsList">
+                <li th:each="link : ${group.links}">
+                  <a rel="nofollow" target="_blank" th:href="@{${link.spec.url}}">
+                    <img loading="lazy" th:src="${link.spec.logo}" th:alt="${link.spec.displayName}">
+                      <div class="linkpage_links" th:text="${link.spec.displayName}"></div>
+                      <p th:text="${link.spec.description}"></p>
+                  </a>
+                </li>
+              </ul>
+          </div>
+          <halo:comment
+            group="content.halo.run"
+            kind="SinglePage"
+            name="links"
+            colorScheme="colorMode"
+          />
+      </div>
+    </main>
+  </th:block>
+</html>

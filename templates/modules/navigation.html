@@ -1,0 +1,28 @@
+  <nav class="navbar" th:with="menu = ${menuFinder.getPrimary()}">
+    <div class="container">
+      <div class="flex">
+        <div>
+          <a class="brand" th:href="${site.url}">
+            <img th:src="${site.logo}" alt="">
+            &nbsp;&nbsp;<th:href="${site.url}" th:text="${site.title}">
+          </a>
+        </div>
+          <div class="flex">
+            <div th:with="menu = ${menuFinder.getPrimary()}" class="site_nav" id="site_nav">
+              <ul th:if="${menu != null} and ${not #lists.isEmpty(menu.menuItems)}">
+                <li th:each="menuItem : ${menu.menuItems}">
+                  <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}"></a>
+                </li>
+              </ul>
+            </div>
+              <div class="menu_icon">
+                <a id="menu_icon">
+                  <i class="ri-menu-fill"></i>
+                </a>
+              </div>
+            <th:block th:replace="~{modules/colorscheme}" />
+          </div>
+        </div>
+    </div>
+  </nav>
+<script type="text/javascript" th:src="@{/assets/js/activeNav.js}"></script>
