@@ -1,0 +1,17 @@
+apiVersion: theme.halo.run/v1alpha1
+kind: Theme
+metadata:
+  name: theme-yolo
+spec:
+  displayName: Theme YOLO
+  author:
+    name: 丹作百年
+    website: https://playet.cn
+  description: A development starter theme with Vite Ecosystem for Halo
+  logo: https://cdn.playet.cn/themes/yoyo/avatar.png
+  website: https://playet.cn
+  repo: https://github.com/myhugg/halo-theme-yolo
+  settingName: "theme-yolo-setting"
+  configMapName: "theme-yolo-configMap"
+  version: 1.0.1
+  require: 2.8.0

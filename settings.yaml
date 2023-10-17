@@ -1,0 +1,95 @@
+apiVersion: v1alpha1
+kind: Setting
+metadata:
+  name: theme-yolo-setting
+spec:
+  forms:
+    - group: cdns
+      label: CDN配置
+      formSchema:
+        - $formkit: radio
+          name: jquery
+          id: jquery
+          label: jquery
+          value: false
+          options:
+            - label: 开启
+              value: true
+            - label: 关闭
+              value: false
+        - $formkit: text
+          if: "$get(jquery).value"
+          name: jquery_url
+          label: jquery cdn地址
+          value: https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js
+    - group: fotter
+      label: 社交
+      formSchema:
+        - $formkit: repeater
+          name: social_media
+          label: 社交媒体
+          value: [ ]
+          children:
+            - $formkit: select
+              name: icon
+              label: 图标
+              options:
+                - label: 电子邮箱
+                  value: ri-mail-fill
+                - label: 微信
+                  value: ri-wechat-fill
+                - label: 腾讯 QQ
+                  value: ri-qq-fill
+                - label: 新浪微博
+                  value: ri-weibo-fill
+                - label: Facebook
+                  value: ri-facebook-circle-fill
+                - label: Twitter
+                  value: ri-twitter-fill
+                - label: GitHub
+                  value: ri-github-fill
+                - label: RSS
+                  value: ri-rss-fill
+            - $formkit: text
+              name: name
+              label: 名称
+            - $formkit: text
+              name: url
+              label: 链接
+              validation: "required"
+            - $formkit: radio
+              name: url_type
+              label: 链接类型
+              value: normal
+              help: "如果选择了图片类型，那么在访客点击之后会使用弹框的形式加载"
+              options:
+                - label: 跳转链接
+                  value: normal
+                - label: 图片
+                  value: image
+    - group: beian
+      label: 备案设置
+      formSchema:
+        - $formkit: text
+          name: icp_text
+          label: ICP备案号
+        - $formkit: text
+          name: icp_link
+          label: ICP备案跳转链接
+          value: https://beian.miit.gov.cn/
+    - group: Projects
+      label: 项目
+      formSchema:
+        - $formkit: text
+          name: Projects_name
+          label: 项目名称
+        - $formkit: text
+          name: Projects_links
+          label: 项目链接
+        - $formkit: text
+          name: Projects_ms
+          label: 项目描述
+        - $formkit: text
+          name: Projects_icon
+          label: 项目图标
+
